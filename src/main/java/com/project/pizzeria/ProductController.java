@@ -30,7 +30,7 @@ public class ProductController {
 	
 	private ProductService productService = new ProductService();
 	
-	@Path("/api/admin/product")
+	@Path("/admin/product")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response create(Product product)
@@ -45,7 +45,7 @@ public class ProductController {
 		return Response.status(Response.Status.CREATED).entity(product).build();
 	}
 	
-	@Path("/api/admin/product")
+	@Path("/admin/product")
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response modify(Product product)
@@ -60,7 +60,7 @@ public class ProductController {
 		return Response.status(Response.Status.OK).entity(product).build();
 	}
 
-	@Path("/api/admin/product/{id}")
+	@Path("/admin/product/{id}")
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") Long id)
@@ -75,7 +75,7 @@ public class ProductController {
 		return Response.status(Response.Status.OK).build();
 	}
 	
-	@Path("/api/admin/product")
+	@Path("/admin/product")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllProducts()
@@ -91,7 +91,7 @@ public class ProductController {
 		return Response.status(Response.Status.OK).entity(list).build();
 	}
 	
-	@Path("/api/shared/product")
+	@Path("/shared/product")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAvailableProduct()
@@ -107,7 +107,7 @@ public class ProductController {
 		return Response.status(Response.Status.OK).entity(list).build();
 	}
 	
-	@Path("/api/shared/product/{id}")
+	@Path("/shared/product/{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAvailableProduct(@PathParam("id") Long id)
