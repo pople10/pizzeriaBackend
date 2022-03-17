@@ -28,7 +28,13 @@ public class GenericBean implements Serializable{
 				Method method = ourClass.getMethod("get"+GenericUtil.toTitleCase(name), null);
 				Object result = method.invoke(this, null);
 				if(result!=null)
+				{
+					if(result.toString().equals("true"))
+						result="1";
+					if(result.toString().equals("false"))
+						result="0";
 					out.put(name, result.toString());
+				}
 			} catch (NoSuchMethodException | SecurityException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {

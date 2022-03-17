@@ -15,11 +15,13 @@ public class ProductService {
 	
 	public boolean createProduct(Product product) throws SQLException
 	{
+		product.setAvailability(true);
 		return productDao.create(product.toMap());
 	}
 	
 	public boolean updateProduct(Product product) throws SQLException
 	{
+		product.setAvailability(true);
 		return productDao.update(product.toMap(),product.getId());
 	}
 	

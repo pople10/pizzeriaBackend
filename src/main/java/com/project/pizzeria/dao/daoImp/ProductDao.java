@@ -13,6 +13,9 @@ public class ProductDao extends GenericDao {
 	
 	public ResultSet findByAvailability(Boolean flag) throws SQLException
 	{
-		return super.findByColumn(flag, "availability");
+		String result="0";
+		if(flag.equals(true))
+			result="1";
+		return super.findByColumn(result, "availability");
 	}
 }
