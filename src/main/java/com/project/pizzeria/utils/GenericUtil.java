@@ -2,8 +2,12 @@ package com.project.pizzeria.utils;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class GenericUtil {
 	public static String generateQuestionMarks(Map<String,String> args)
@@ -62,6 +66,23 @@ public class GenericUtil {
 		return out;
 	} 
 	
+	public static String generateInClauseArgs(List<Long> list)
+	{
+		String out="(";
+		boolean passed=false;
+		for(Long data : list)
+		{
+			passed=true;
+			out+=data+",";
+		}
+		if(passed)
+			out=removeLastCharFromString(out);
+		else
+			return "(0)";
+		out+=")";
+		return out;
+	}
+	
 	public static PreparedStatement injectData(Map<String,String> args,PreparedStatement old) throws SQLException
 	{
 		int cmp=1;
@@ -71,6 +92,15 @@ public class GenericUtil {
 			cmp++;
 		}
 		return old;
+	}
+	
+	public static String getClientIpAddress(HttpServletRequest request) {
+	    String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+	    if (xForwardedForHeader == null) {
+	        return request.getRemoteAddr();
+	    } else {
+	        return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+	    }
 	}
 	
 	public static PreparedStatement injectData(Map<String,String> args,PreparedStatement old,Long id) throws SQLException

@@ -19,8 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.pizzeria.beans.Log;
 import com.project.pizzeria.beans.User;
 import com.project.pizzeria.exeptions.ExceptionHandler;
+import com.project.pizzeria.services.LogService;
+import com.project.pizzeria.utils.GenericUtil;
 import com.project.pizzeria.utils.enumuration.UserRole;
 
 /**
@@ -30,6 +33,8 @@ import com.project.pizzeria.utils.enumuration.UserRole;
 public class AuthorizationFilter implements Filter {
 	
 	private Map<String,List<String>> middleware = new HashMap<String,List<String>>();
+	
+	private static LogService logService = new LogService();
 
     /**
      * Default constructor. 
@@ -46,6 +51,9 @@ public class AuthorizationFilter implements Filter {
         shared.add(UserRole.USER.toString());
         shared.add(UserRole.DELIVERY.toString());
         middleware.put("api/shared",shared);
+        List<String> deliveryOnly = new ArrayList<String>();
+        deliveryOnly.add(UserRole.DELIVERY.toString());
+        middleware.put("api/delivery", deliveryOnly);
     }
 
 	/**
@@ -75,6 +83,12 @@ public class AuthorizationFilter implements Filter {
 				}
 			}
 		chain.doFilter(request, response);
+		/* Post interceptor */
+		Log log = new Log();
+		if(user!=null)
+			log.setUser(user.getId());
+		log.setIp(GenericUtil.getClientIpAddress((HttpServletRequest)request));
+		logService.logForUser(log);
 	}
 
 	/**

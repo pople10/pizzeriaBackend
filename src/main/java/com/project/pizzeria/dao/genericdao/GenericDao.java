@@ -103,7 +103,7 @@ public abstract class GenericDao {
 		 }
 	 }
 	 
-	 public ResultSet findByColumn(Object value,String columnName) throws SQLException
+	 protected ResultSet findByColumn(Object value,String columnName) throws SQLException
 	 {
 		 try {
 			 String sql = "SELECT * FROM "+DB_NAME+" WHERE "+columnName+"=?";

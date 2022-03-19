@@ -1,7 +1,7 @@
 package com.project.pizzeria.utils.enumuration;
 
 public enum CouponType {
-	POURENCTAGE("Pourcentage"),
+	POURCENCTAGE("Pourcentage"),
 	CASH("Fonds");
 	
 	private final String label;

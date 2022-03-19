@@ -2,8 +2,11 @@ package com.project.pizzeria.beans;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.pizzeria.beans.generic.GenericBean;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Order extends GenericBean {
 	private Long id;
 	private String coupon;
@@ -14,6 +17,7 @@ public class Order extends GenericBean {
 	private Long delivery;
 	private Long address;
 	private Long product;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp wanted_at;
 	private Timestamp created_at;
 	private Timestamp updated_at;
