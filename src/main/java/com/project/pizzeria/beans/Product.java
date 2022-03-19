@@ -1,7 +1,9 @@
 package com.project.pizzeria.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.pizzeria.beans.generic.GenericBean;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product extends GenericBean {
 	private Long id;
 	private String title;
