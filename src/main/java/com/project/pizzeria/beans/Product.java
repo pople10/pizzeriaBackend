@@ -1,5 +1,7 @@
 package com.project.pizzeria.beans;
 
+
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.pizzeria.beans.generic.GenericBean;
 
@@ -8,6 +10,7 @@ public class Product extends GenericBean {
 	private Long id;
 	private String title;
 	private String description;
+	private String photo;
 	private Float price;
 	private Long preparation_time_in_min;
 	private Boolean availability;
@@ -47,10 +50,16 @@ public class Product extends GenericBean {
 	public void setAvailability(Boolean availability) {
 		this.availability = availability;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", price=" + price
-				+ ", preparation_time_in_min=" + preparation_time_in_min + ", availability=" + availability + "]";
+		return "Product [id=" + id + ", title=" + title + ", description=" + description + ", photo=" + photo
+				+ ", price=" + price + ", preparation_time_in_min=" + preparation_time_in_min + ", availability="
+				+ availability + "]";
 	}
-	
 }

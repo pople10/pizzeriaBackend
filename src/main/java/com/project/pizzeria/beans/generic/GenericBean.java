@@ -29,9 +29,9 @@ public class GenericBean implements Serializable{
 				Object result = method.invoke(this, null);
 				if(result!=null)
 				{
-					if(result.toString().equals(true))
+					if(result.toString().equals("true"))
 						result="1";
-					if(result.toString().equals(false))
+					if(result.toString().equals("false"))
 						result="0";
 					out.put(name, result.toString());
 				}
