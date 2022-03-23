@@ -4,7 +4,7 @@ import java.sql.*;
 
 
 public class DBConnection {
-	private static String url = "jdbc:mysql://localhost:3306/pizzaria";
+	private static String url = "jdbc:mysql://localhost:3306/pizzaria?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false";
 	private static String username = "root";
 	private static String password = "";
 	private Connection conn;
