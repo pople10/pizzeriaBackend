@@ -1,4 +1,9 @@
-![alt text](https://github.com/pople10/pizzeriaBackend/blob/master/diagram.png?raw=true);
+<p>
+In this project, I tried to simulate the spring arch using native JEE with a refactored code, I will improve it and its performances when I get time.
+</p>
+<hr>
+
+![alt text](https://github.com/pople10/pizzeriaBackend/blob/master/diagram.png?raw=true)
 <hr>
 <h1>Database as SQL commands</h1>
 
