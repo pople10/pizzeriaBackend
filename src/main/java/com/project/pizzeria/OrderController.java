@@ -42,7 +42,7 @@ public class OrderController {
 	{
 		User user = (User) request.getAttribute("user");
 		try {
-			orderService.createOrder(order, user);
+			order=orderService.createOrder(order, user);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.BAD_REQUEST).entity(
@@ -121,9 +121,9 @@ public class OrderController {
 	public Response getOrderForDelivery(@PathParam("id") Long id)
 	{	
 		User user = (User) request.getAttribute("user");
-		Order order = new Order();
+		Map<String,Object> order = new HashMap<String,Object>();
 		try {
-			order=orderService.getOrderForDelivery(id, user);
+			order=orderService.getOrderDataByIdForUser(user,id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.BAD_REQUEST).entity(

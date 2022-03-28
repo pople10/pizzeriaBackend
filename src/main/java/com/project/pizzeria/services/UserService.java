@@ -77,6 +77,12 @@ public class UserService {
 		return (User) (new User()).mapper(userDao.findById(id),tmp);
 	}
 	
+	public User findUserByEmail(String email) throws SQLException
+	{
+		User tmp = new User();
+		return (User) (new User()).mapper(userDao.findByEmail(email),tmp);
+	}
+	
 	public List<User> findAllUsers() throws SQLException
 	{
 		User tmp = new User();

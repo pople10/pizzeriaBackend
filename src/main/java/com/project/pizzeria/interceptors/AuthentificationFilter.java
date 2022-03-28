@@ -54,6 +54,15 @@ public class AuthentificationFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse responseHttp = (HttpServletResponse)response;
+		 responseHttp.addHeader("Access-Control-Allow-Origin", "*");
+	     responseHttp.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+	     responseHttp.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin, Access-Control-Allow-Credentials, authorization");
+	     responseHttp.addHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,PATCH");
+	     if (httpRequest.getMethod().equals("OPTIONS")) {
+	         responseHttp.setStatus(HttpServletResponse.SC_OK);
+	         return;
+	     }
 		String token = httpRequest.getHeader(Constants.AUTHORIZATION_HEADER);
 		HttpServletResponse httpServletResponse = (HttpServletResponse)response;
 		if(token==null)

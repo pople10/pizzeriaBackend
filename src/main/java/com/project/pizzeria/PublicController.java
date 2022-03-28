@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -75,5 +76,23 @@ public class PublicController {
 					new ExceptionHandler(e)).build();
 		}
 		return Response.status(Response.Status.OK).entity(list).build();
+	}
+	
+	@Path("/product/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getProduct(@PathParam("id") Long id)
+	{	
+		Product product = new Product();
+		try {
+			product=productService.findProductById(id);
+			if(!product.getAvailability())
+				throw new SQLException("Product is not available");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).entity(
+					new ExceptionHandler(e)).build();
+		}
+		return Response.status(Response.Status.OK).entity(product).build();
 	}
 }

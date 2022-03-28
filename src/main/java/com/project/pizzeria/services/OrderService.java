@@ -35,7 +35,7 @@ public class OrderService {
 		userService = new UserService();
 	}
 	
-	public boolean createOrder(Order order,User user) throws SQLException
+	public Order createOrder(Order order,User user) throws SQLException
 	{
 		if(!order.getType().equals(OrderType.CASH_ON_DELIVERY.toString()))
 			order.setType(OrderType.RESERVATION.toString());
@@ -75,7 +75,8 @@ public class OrderService {
 		order.setStatus(OrderStatus.PENDING.toString());
 		order.setCreated_at(new Timestamp(System.currentTimeMillis()));
 		order.setUpdated_at(order.getCreated_at());
-		return orderDao.create(order.toMap());
+		Long id=orderDao.createOrder(order.toMap());
+		return this.getOrderById(id);
 	}
 	
 	public List<Order> getAllOrders() throws SQLException
