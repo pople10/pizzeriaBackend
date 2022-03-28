@@ -169,7 +169,7 @@ public class OrderController {
 	}
 	
 	@GET
-	@Path("/user/admin/{id}")
+	@Path("/admin/order/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getOrder(@PathParam("id") Long id)
 	{
@@ -182,6 +182,22 @@ public class OrderController {
 					new ExceptionHandler(e)).build();
 		}
 		return Response.status(Response.Status.OK).entity(order).build();
+	}
+	
+	@GET
+	@Path("/admin/delivery")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getDelivery()
+	{
+		List<User> list = new ArrayList<User>();
+		try {
+			list=orderService.getDeliveries();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).entity(
+					new ExceptionHandler(e)).build();
+		}
+		return Response.status(Response.Status.OK).entity(list).build();
 	}
 	
 	@GET
@@ -216,7 +232,7 @@ public class OrderController {
 		return Response.status(Response.Status.OK).entity(order).build();
 	}
 	
-	@Path("/admin/order/{id}")
+	@Path("/admin/order/{id}/delivery")
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response assignDelivery(@PathParam("id") Long id,@FormParam("delivery") Long delivery)

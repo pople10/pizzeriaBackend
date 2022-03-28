@@ -182,4 +182,9 @@ public class OrderService {
 		map.put("delivery",delivery);
 		return map;
 	}
+	
+	public List<User> getDeliveries() throws SQLException
+	{
+		return userService.getDeliveries();
+	}
 }

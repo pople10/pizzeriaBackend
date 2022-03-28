@@ -104,4 +104,10 @@ public class UserService {
 	public boolean logout(Token token) throws SQLException {
 		return tokenDao.delete(token.getId());
 	}
+	
+	public List<User> getDeliveries() throws SQLException
+	{
+		User tmp = new User();
+		return (List<User>) tmp.mapperList(userDao.findByRole("DELIVERY"),tmp);
+	}
 }

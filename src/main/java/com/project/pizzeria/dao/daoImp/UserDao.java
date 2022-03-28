@@ -54,5 +54,10 @@ public class UserDao extends GenericDao {
 			 //DBConnection.openSession().closeSession();
 		 }
 	}
+	
+	public ResultSet findByRole(String role) throws SQLException
+	{
+		return this.findByColumn(role, "role");
+	}
 
 }
