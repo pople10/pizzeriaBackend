@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -35,6 +36,20 @@ public class CouponController {
 	{		
 		try {
 			couponService.createCoupon(coupon);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.BAD_REQUEST).entity(
+					new ExceptionHandler(e)).build();
+		}
+		return Response.status(Response.Status.CREATED).entity(coupon).build();
+	}
+	
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response update(Coupon coupon)
+	{		
+		try {
+			couponService.updateCoupon(coupon);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.BAD_REQUEST).entity(

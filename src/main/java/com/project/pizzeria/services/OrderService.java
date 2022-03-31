@@ -95,12 +95,12 @@ public class OrderService {
 	public boolean assignDelivery(Long idOrder,Long idUser) throws SQLException
 	{
 		User user = userService.findUserById(idUser);
-		if(user.getId()==null||user.getRole().equals(UserRole.DELIVERY.toString()))
+		if(user.getId()==null||!user.getRole().equals(UserRole.DELIVERY.toString()))
 			throw new SQLException("User is not a delivery or doesn't exist");
 		Order order = getOrderById(idOrder);
 		if(order.getId()==null)
 			throw new SQLException("Order doesn't exist");
-		if(order.getDelivery()!=null)
+		if(order.getDelivery()!=null&&order.getDelivery()!=0)
 			throw new SQLException("A delivery man already assigned");
 		order.setDelivery(idUser);
 		return this.updateOrder(order);

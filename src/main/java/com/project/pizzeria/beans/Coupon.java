@@ -11,7 +11,7 @@ public class Coupon extends GenericBean {
 	private Long id;
 	private String code;
 	private Float amount;
-	private String Type;
+	private String type;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp expiration;
 	public Long getId() {
@@ -33,10 +33,10 @@ public class Coupon extends GenericBean {
 		this.amount = amount;
 	}
 	public String getType() {
-		return Type;
+		return type;
 	}
 	public void setType(String type) {
-		Type = type;
+		this.type = type;
 	}
 	public Timestamp getExpiration() {
 		return expiration;
@@ -46,7 +46,7 @@ public class Coupon extends GenericBean {
 	}
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", code=" + code + ", amount=" + amount + ", Type=" + Type + ", expiration="
+		return "Coupon [id=" + id + ", code=" + code + ", amount=" + amount + ", type=" + type + ", expiration="
 				+ expiration + "]";
 	}
 	

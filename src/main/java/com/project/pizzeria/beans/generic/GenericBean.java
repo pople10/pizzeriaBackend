@@ -56,6 +56,7 @@ public class GenericBean implements Serializable{
 	{
 		Class ourClass = this.getClass();
 		try {
+			if(set!=null)
 			while (set.next()) {
 				for(Field field : ourClass.getDeclaredFields())
 				{
@@ -92,6 +93,7 @@ public class GenericBean implements Serializable{
 		List<GenericBean> out = new ArrayList<GenericBean>();
 		Class ourClass = this.getClass();
 		try {
+			if(set!=null)
 			while (set.next()) {
 				GenericBean tmp2=null;
 				try {

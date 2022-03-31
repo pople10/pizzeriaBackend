@@ -41,5 +41,10 @@ public class CouponService {
 		coupon.setExpiration(new Timestamp(System.currentTimeMillis()));
 		return couponDao.update(coupon.toMap(), coupon.getId());
 	}
+	
+	public boolean updateCoupon(Coupon coupon) throws SQLException
+	{
+		return couponDao.update(coupon.toMap(), coupon.getId());
+	}
 
 }
