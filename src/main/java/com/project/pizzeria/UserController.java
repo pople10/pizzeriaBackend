@@ -38,7 +38,7 @@ public class UserController {
 	private static TokenService tokenService = new TokenService();
 
 	
-	@Path("/")
+	@Path("/logout")
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response signout()
