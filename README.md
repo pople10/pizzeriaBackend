@@ -127,7 +127,7 @@
 		</ol>
 	</li>
 </ul>
-<h3 style="color:#ff0000;><font color="red">N'oublier pas de modifier le lien du serveur dans le env.ts dans le <a _target="" href="https://github.com/pople10/pizzeriaFront">frontend</a> si vous souhaitez d'heberger l'application ou changer le port</font></h3>
+<h3 style="color:#ff0000;>N'oublier pas de modifier le lien du serveur dans le env.ts dans le <a _target="" href="https://github.com/pople10/pizzeriaFront">frontend</a> si vous souhaitez d'heberger l'application ou changer le port</h3>
 <hr>
 
 ![alt text](https://github.com/pople10/pizzeriaBackend/blob/master/diagram.png?raw=true)
